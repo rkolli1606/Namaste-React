@@ -777,7 +777,7 @@ const Body = ()=>{
 }
 
 
-const Footer = ()=>(<h1>Footer</h1>)
+const Footer = ()=>(<h1>Footer content</h1>)
 
 
 const App1 = ()=>{
