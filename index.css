@@ -1,8 +1,8 @@
 .header{
     display:flex;
     justify-content: space-between;
-    align-items: center;;
-    padding:1em;
+    /* align-items: center;; */
+    /* padding:1em; */
     border:1px solid black;
 }
 
@@ -15,8 +15,25 @@
     gap:10px;
 }
 
-.header > ul > li{
+/* .header > ul > li{
     list-style-type:none;
+} */
+
+.nav-items>ul{
+    display: flex;
+    gap:10px;
+    padding:1.2em;
+}
+.nav-items>ul>li{
+    list-style-type: none;
+    
+}
+.login-btn{
+    align-self: stretch;
+}
+
+.search-div{
+    margin:0.2em;
 }
 
 .card{
@@ -34,4 +51,15 @@
     display: flex;
     gap:10px;
     flex-wrap:wrap;
+}
+.shimmer-card{
+    height:200px;
+    width:200px;
+    background-color: lightgrey;
+    margin:1em;
+    
+}
+.shimmer-flex{
+    display: flex;
+    flex-wrap: wrap;
 }
