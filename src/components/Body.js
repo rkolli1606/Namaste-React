@@ -2,6 +2,7 @@ import {React,useState,useEffect} from 'react'
 import { RestaurantCard } from "./RestaurantCard"
 import { restrautList } from "../Contants"
 import Shimmer from './Shimmer.js'
+import {createBrowserRouter} from 'react-router-dom'
 
 export const Body = ()=>{
     let search = 'hello'
@@ -10,6 +11,7 @@ export const Body = ()=>{
     //const[apidata,setApiData] = React.useState(restrautList)
     const [allRestaurants, setAllRestaurants] = useState([])
     const [filteredRestaurants, setFilteredRestaurants] = useState([])
+
     
     function searchRestaurants(text,resData){
         const dat= resData.filter((res)=>{

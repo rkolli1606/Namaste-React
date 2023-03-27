@@ -1,6 +1,7 @@
 
 import {useState} from 'React'
 import Logo from '../assets/images/Logo.jpeg'
+import {Link} from 'react-router-dom'
 
 // const Title = ()=>(<h1>FoodVilla</h1>)
 
@@ -12,8 +13,8 @@ export const Header = ()=> {
         <img src={Logo} alt="App logo" className="logo"></img>
         <div className="nav-items">
             <ul>
-                <li>Home</li>
-                <li>About</li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
                 <li>Contact</li>
                 <li>Cart</li>
             </ul>
