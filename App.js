@@ -9,6 +9,7 @@ import RestrauntMenu from './src/components/RestrauntMenu'
 import {createBrowserRouter} from 'react-router-dom'
 import {RouterProvider} from 'react-router-dom'
 import{Outlet} from 'react-router-dom'
+import Profile from './src/components/Profile'
 const App1 = ()=>{
 
     return(<>
@@ -30,7 +31,13 @@ const appRouter = createBrowserRouter([
             },
             {
                 path:'/about',
-                element:<About/>
+                element:<About/>,
+                children:[
+                    {
+                        path:'profile',
+                        element:<Profile/>
+                    }
+                ]
             },
             {
                 path:'restraunt/:id',
