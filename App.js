@@ -1,15 +1,21 @@
-import React from 'react'
+import React,{lazy,Suspense} from 'react'
 import ReactDOM from 'react-dom/client'
 import {Header} from './src/components/Header'
 import {Body} from './src/components/Body'
 import {Footer} from './src/components/Footer'
-import About from './src/components/About'
+//import About from './src/components/About'
 import Error from './src/components/Error'
 import RestrauntMenu from './src/components/RestrauntMenu'
 import {createBrowserRouter} from 'react-router-dom'
 import {RouterProvider} from 'react-router-dom'
 import{Outlet} from 'react-router-dom'
 import Profile from './src/components/Profile'
+import Shimmer from './src/components/Shimmer'
+//import Instamart from './src/components/Instamart'
+
+const About = lazy(()=>import('./src/components/About')) //without suspense
+const Instamart = lazy(()=>import('./src/components/Instamart'))//with suspense
+
 const App1 = ()=>{
 
     return(<>
@@ -42,6 +48,12 @@ const appRouter = createBrowserRouter([
             {
                 path:'restraunt/:id',
                 element:<RestrauntMenu/>
+            },
+            {
+                path:'instamart',
+                element:<Suspense fallback={<Shimmer/>}>
+                        <Instamart/>
+                    </Suspense>
             }
         ]
 
