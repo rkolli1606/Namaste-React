@@ -20,15 +20,15 @@ export const Body = ()=>{
 
     return(filteredRestaurants.length===0)?(<Shimmer/>):(
         <>  
-            <div className="search-div">
+            <div className="m-2 p-2 bg-pink-50">
                 <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
-                <button onClick = {()=>{
+                <button className="bg-green-400 p-2 m-4 rounded" onClick = {()=>{
                     setFilteredRestaurants(searchRestaurants(searchText,allRestaurants))
                     }}>
                     Search
                 </button>
             </div>
-            <div className="restaurant-list">
+            <div className="flex flex-wrap gap-5">
             {filteredRestaurants.map((restuarant,index)=>(
             <Link to={"restraunt/"+restuarant.data.id} key={restuarant.data.id}><RestaurantCard {...restuarant.data} key={restuarant.data.id}/></Link>))}
             </div>

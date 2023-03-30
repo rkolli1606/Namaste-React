@@ -9,10 +9,10 @@ export const Header = ()=> {
     const[isLoggedIn,setIsLoggedIn] = useState(false)
     
     return(
-    <div className="header">
-        <img src={Logo} alt="App logo" className="logo"></img>
-        <div className="nav-items">
-            <ul>
+    <div className="flex justify-between items-center bg-yellow-50">
+        <img src={Logo} alt="App logo" className="w-30 h-32"></img>
+        <div >
+            <ul className="flex gap-10">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to='/contact'>Contact</Link></li>
