@@ -1,9 +1,9 @@
-import React,{lazy,Suspense} from 'react'
+import React,{lazy,Suspense,useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import {Header} from './src/components/Header'
 import {Body} from './src/components/Body'
 import {Footer} from './src/components/Footer'
-//import About from './src/components/About'
+import About from './src/components/About'
 import Error from './src/components/Error'
 import RestrauntMenu from './src/components/RestrauntMenu'
 import {createBrowserRouter} from 'react-router-dom'
@@ -12,17 +12,23 @@ import{Outlet} from 'react-router-dom'
 import Profile from './src/components/Profile'
 import Shimmer from './src/components/Shimmer'
 //import Instamart from './src/components/Instamart'
+import UserContext from './src/utils/UserContext'
 
-const About = lazy(()=>import('./src/components/About')) //without suspense
+//const About = lazy(()=>import('./src/components/About')) //without suspense
 const Instamart = lazy(()=>import('./src/components/Instamart'))//with suspense
 
 const App1 = ()=>{
 
-    return(<>
+    const [user,setUser] = useState({
+        name:"Ramu Kolli",
+        email:"ramu@suppportdev.com"
+    })
+
+    return(<UserContext.Provider value={{user:user,setUser:setUser}}>
             <Header/>
             <Outlet/>
             <Footer/>
-            </>)
+            </UserContext.Provider>)
 }
 const root = ReactDOM.createRoot(document.getElementById('root'))
 const appRouter = createBrowserRouter([
@@ -33,7 +39,10 @@ const appRouter = createBrowserRouter([
         children:[
             {
                 path:'/',
-                element:<Body/>
+                element:<Body user={{
+                    name:"Ramu Kolli",
+                    email:"ramu@suppportdev.com"
+                }}/>
             },
             {
                 path:'/about',

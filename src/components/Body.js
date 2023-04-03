@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react'
+import {React,useState,useEffect,useContext} from 'react'
 import { RestaurantCard } from "./RestaurantCard"
 import { restrautList } from "../Contants"
 import Shimmer from './Shimmer.js'
@@ -7,14 +7,16 @@ import {searchRestaurants} from '../utils/helper.js'
 import {Link} from 'react-router-dom'
 import useGetRestaurants from '../utils/useGetRestaurants'
 import useOnline from '../utils/useOnline'
+import UserContext from '../utils/UserContext'
 
-export const Body = ()=>{
+export const Body = (props)=>{
     let search = 'hello'
     const[searchText,setSearchText] = useState("")
     const [restaurant,allRestaurants,filteredRestaurants] = useGetRestaurants()
     const status = useOnline()
+    const {user,setUser} = useContext(UserContext)
 
-    if(!    status){
+    if(!status){
         return(<h1>You are offline. Check your internet connection</h1>)
     }
 
@@ -27,10 +29,11 @@ export const Body = ()=>{
                     }}>
                     Search
                 </button>
+                <input value={user.name} onChange={(e)=>setUser({...user,name:e.target.value})}/>
             </div>
             <div className="flex flex-wrap gap-5">
             {filteredRestaurants.map((restuarant,index)=>(
-            <Link to={"restraunt/"+restuarant.data.id} key={restuarant.data.id}><RestaurantCard {...restuarant.data} key={restuarant.data.id}/></Link>))}
+            <Link to={"restraunt/"+restuarant.data.id} key={restuarant.data.id}><RestaurantCard {...restuarant.data} key={restuarant.data.id} user={props.user}/></Link>))}
             </div>
         </>
 )
